@@ -49,55 +49,55 @@ class LazyfileTest < Test::Unit::TestCase
     assert foo, 'Expected with_lazyfiles block to be executed'
   end
 
-  # def test_helper_creates_2_tempfiles_when_passed_2_arguments
-  #   @object.with_lazyfiles do |a, b|
-  #     [a, b].each do |arg|
-  #       assert arg.is_a?(Lazyfile),
-  #         'Expected argument to be a Lazyfile object'
-  #     end
-  #   end
-  # end
+  def test_helper_creates_2_tempfiles_when_passed_2_arguments
+    @object.with_lazyfiles do |a, b|
+      [a, b].each do |arg|
+        assert arg.is_a?(Lazyfile),
+          'Expected argument to be a Lazyfile object'
+      end
+    end
+  end
 
-  # def test_helper_creates_5_tempfiles_when_passed_5_arguments
-  #   @object.with_lazyfiles do |a, b, c, d, e|
-  #     [a, b, c, d, e].each do |arg|
-  #       assert arg.is_a?(Lazyfile),
-  #         'Expected argument to be a Lazyfile object'
-  #     end
-  #   end
-  # end
+  def test_helper_creates_5_tempfiles_when_passed_5_arguments
+    @object.with_lazyfiles do |a, b, c, d, e|
+      [a, b, c, d, e].each do |arg|
+        assert arg.is_a?(Lazyfile),
+          'Expected argument to be a Lazyfile object'
+      end
+    end
+  end
 
-  # def test_helper_creates_only_referenced_tempfile
-  #   @object.with_lazyfiles do |file1, file2|
-  #     assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
-  #     assert_match /^mediapeers/, File.basename(file1.path)
-  #     assert Dir["#{Dir.tmpdir}/mediapeers*"].one?,
-  #       'Expected only one temp file to exist'
-  #   end
-  # end
+  def test_helper_creates_only_referenced_tempfile
+    @object.with_lazyfiles do |file1, file2|
+      assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
+      assert_match /^mediapeers/, File.basename(file1.path)
+      assert Dir["#{Dir.tmpdir}/mediapeers*"].one?,
+        'Expected only one temp file to exist'
+    end
+  end
 
-  # def test_helper_cleans_up_after_itself
-  #   @object.with_lazyfiles do |file1, file2, file3|
-  #     file1.path
-  #     file2.path
-  #     assert_equal 2, Dir["#{Dir.tmpdir}/mediapeers*"].size
-  #   end
+  def test_helper_cleans_up_after_itself
+    @object.with_lazyfiles do |file1, file2, file3|
+      file1.path
+      file2.path
+      assert_equal 2, Dir["#{Dir.tmpdir}/mediapeers*"].size
+    end
 
-  #   assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
-  # end
+    assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
+  end
 
-  # def test_files_respond_to_common_tempfile_methods
-  #   @object.with_lazyfiles do |file|
-  #     [:path, :size, :close, :open, :unlink].each do |method_name|
-  #       assert_respond_to file, method_name
-  #     end
-  #   end
-  # end
+  def test_files_respond_to_common_tempfile_methods
+    @object.with_lazyfiles do |file|
+      [:path, :size, :close, :open, :unlink].each do |method_name|
+        assert_respond_to file, method_name
+      end
+    end
+  end
 
-  # def test_respond_to_does_not_create_tempfile
-  #   @object.with_lazyfiles do |file|
-  #     file.respond_to?(:path)
-  #     assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
-  #   end
-  # end
+  def test_respond_to_does_not_create_tempfile
+    @object.with_lazyfiles do |file|
+      file.respond_to?(:path)
+      assert_empty Dir["#{Dir.tmpdir}/mediapeers*"]
+    end
+  end
 end

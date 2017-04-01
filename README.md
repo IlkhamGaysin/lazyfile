@@ -1,15 +1,13 @@
 # Lazyfile
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lazyfile`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple test task for [Mediapeers](https://www.mediapeers.com)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'lazyfile'
+gem 'lazyfile', git: "https://github.com/IlkhamGaysin/lazyfile"
 ```
 
 And then execute:
@@ -22,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+
+# We need a helper method that we can include in any class.
+# The helper should accept a block and assign objects of lazy-temp files to each
+# argument of this block, no matter how many arguments there are.
+#
+# For example:
+
+with_lazyfiles do |file1, file2, file3|
+  file2.write "hello"
+end
+
+# What are lazy-temp files?
+# Temp files should not be created until they used inside block. In current
+# example, file1 and file3 will never physically created, since they not used.
+# Otherwise lazy-temp files should work similar to Tempfile from ruby stdlib.
+# Also, all names of temp files (in file system) should start with "mediapeers".
+```
 
 ## Development
 
@@ -32,5 +47,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lazyfile.
+Bug reports and pull requests are welcome on GitHub at https://github.com/IlkhamGaysin/lazyfile.
 
