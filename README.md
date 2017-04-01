@@ -1,5 +1,7 @@
 # Lazyfile
 
+[![Build Status](https://semaphoreci.com/api/v1/ilkhamgaysin/lazyfile/branches/master/shields_badge.svg)](https://semaphoreci.com/ilkhamgaysin/lazyfile)
+
 Simple test task for [Mediapeers](https://www.mediapeers.com)
 
 ## Installation
